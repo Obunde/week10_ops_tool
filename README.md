@@ -28,8 +28,11 @@ a **Streamlit UI** (`app.py`), sharing one core package (`ops_tool/`).
 
 ## Project layout
 
+Everything sits at the repository root (the repo *is* the `week10_ops_tool`
+directory — cloning it gives you a folder of that name).
+
 ```
-week10_ops_tool/
+week10_ops_tool/                 <- repo root == the tool directory
 ├── main.py                 CLI entrypoint (run, --dry-run, --seed-samples, --quiet)
 ├── app.py                  Streamlit UI  (streamlit run app.py)
 ├── ops_tool/
@@ -39,15 +42,19 @@ week10_ops_tool/
 │   └── notifier.py         SMTP send + console fallback (all creds from env)
 ├── feeds.example.yaml      sample SLA config (orders / inventory / clickstream / payments)
 ├── tests/test_checker.py   unit tests for the classifier + duration parser
+├── conftest.py             puts the repo root on sys.path for pytest
 ├── requirements.txt
 ├── .env.example            the env vars to copy into .env
 ├── .gitignore              excludes .env, reports/, generated sample data
-├── README.md
-├── PROMPTS.md              log of prompts used to build this (Vibe Coding workflow)
-└── deliverables/
-    ├── VIDEO_SCRIPT.md            3-minute product-demo narration with timings
-    ├── LINKEDIN_POST.md           promo post draft (text only, hashtags, repo link)
-    └── capstone_week10_update.md  Part C write-up (move to the capstone repo root)
+├── README.md               this file
+├── PROMPTS.md              Part A: the Vibe Coding prompt log
+│
+│   # Part B / C course deliverables (also at the root so they are easy to find)
+├── VIDEO_SCRIPT.md               3-minute product-demo narration with timings
+├── demo.sh                       runs the demo sequence with pauses, for live recording
+├── Week10_Product_Demo_Obunde.mp4  silent screencast (caption cards + real CLI output)
+├── LINKEDIN_POST.md              promo post draft (text only, hashtags, repo link)
+└── capstone_week10_update.md     Part C write-up (copy into the capstone repo root)
 ```
 
 ## Setup
@@ -55,8 +62,8 @@ week10_ops_tool/
 Requires Python 3.10+.
 
 ```bash
-git clone https://github.com/Obunde/week10_ops-tool.git
-cd week10_ops-tool
+git clone https://github.com/Obunde/week10_ops_tool.git
+cd week10_ops_tool
 python -m venv .venv && source .venv/bin/activate     # optional but recommended
 pip install -r requirements.txt
 cp .env.example .env                                   # then edit .env if you want real email
@@ -150,3 +157,14 @@ streamlit run app.py
 # 6. (optional) real email: fill SMTP_* / ALERT_* in .env, then drop --dry-run
 python main.py
 ```
+
+## Course deliverables (Week 10)
+
+| Part | Requirement | Where |
+| --- | --- | --- |
+| A | Working tool, runs without errors | this repo — `main.py` / `app.py`, `pytest` (22 tests) |
+| A | Built with an AI assistant, prompts documented | [`PROMPTS.md`](PROMPTS.md) |
+| A | No hardcoded secrets, `.env` based | [`.env.example`](.env.example) + `python-dotenv`; `.env` in [`.gitignore`](.gitignore) |
+| B | 3-minute product demo video | [`Week10_Product_Demo_Obunde.mp4`](Week10_Product_Demo_Obunde.mp4) (silent screencast) + [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md) narration; [`demo.sh`](demo.sh) drives a live recording |
+| B | LinkedIn draft | [`LINKEDIN_POST.md`](LINKEDIN_POST.md) |
+| C | Capstone integration write-up | [`capstone_week10_update.md`](capstone_week10_update.md) — copy to the capstone repo root |

@@ -134,9 +134,25 @@ satisfied the assignment requirements."
 
 **What it produced:** A requirement-by-requirement audit against the rubric
 (tool functionality, PROMPTS.md evidence, security, video, capstone), plus this
-verbatim-prompt rewrite of `PROMPTS.md`, a `deliverables/VIDEO_SCRIPT.md`
-(3-minute narration with timings), a `deliverables/LINKEDIN_POST.md` draft, and
-a `capstone_week10_update.md` scaffold.
+verbatim-prompt rewrite of `PROMPTS.md`, `VIDEO_SCRIPT.md` (3-minute narration
+with timings), `demo.sh` (drives a live screen recording), a generated silent
+demo `Week10_Product_Demo_Obunde.mp4`, a `LINKEDIN_POST.md` draft, and a
+`capstone_week10_update.md` scaffold tailored to the flowgard capstone.
+
+**Follow-up prompts:**
+
+> is possible to generate the mp4, file
+
+> ok,, and also make sure the tools dir is week10_ops_tool ... the naming should
+> be exact
+
+> all listed files/deli ie the documentations and videos should be in root or
+> they wont be detected
+
+Result: generated the silent screencast MP4 with an `imageio-ffmpeg` +
+Pillow frame renderer, then flattened the whole project to the repository root
+(the repo name `week10_ops_tool` is the tool directory) with every doc and the
+video at the top level.
 
 ---
 
