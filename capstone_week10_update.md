@@ -109,7 +109,7 @@ The **feed-freshness classifier and alerting flow** in `week10_ops_tool`: given
 a declarative list of expected feeds, locate the newest artefact per feed,
 classify it `OK` / `LATE` / `MISSING` / `EMPTY`, render a report, and send an
 alert summary on any breach with a credential-free console fallback. Pure,
-tested logic (`ops_tool/checker.py`), decoupled from both the input source and
+tested logic (`week10_ops_tool/checker.py`), decoupled from both the input source and
 the delivery channel.
 
 **The flowgard adaptation I started from it:** a DB-backed variant of the same

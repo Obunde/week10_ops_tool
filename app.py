@@ -2,7 +2,7 @@
 
 Run with:  streamlit run app.py
 
-Shares the exact same core logic as the CLI (``ops_tool`` package). This screen
+Shares the exact same core logic as the CLI (``week10_ops_tool`` package). This screen
 lets you point at a config + drop folder, see the per-feed status, and send (or
 preview) the alert.
 """
@@ -15,10 +15,10 @@ import pandas as pd
 import streamlit as st
 from dotenv import load_dotenv
 
-from ops_tool.checker import check_all, has_breach
-from ops_tool.config import ConfigError, load_config
-from ops_tool.notifier import NotifyError, SmtpSettings, deliver
-from ops_tool.report import breach_count, render_text, subject_line, summary_counts
+from week10_ops_tool.checker import check_all, has_breach
+from week10_ops_tool.config import ConfigError, load_config
+from week10_ops_tool.notifier import NotifyError, SmtpSettings, deliver
+from week10_ops_tool.report import breach_count, render_text, subject_line, summary_counts
 
 load_dotenv()
 

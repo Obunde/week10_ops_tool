@@ -9,8 +9,8 @@ import time
 
 import pytest
 
-from ops_tool.checker import Status, check_all, check_feed, has_breach
-from ops_tool.config import Config, ConfigError, FeedSpec, parse_duration
+from week10_ops_tool.checker import Status, check_all, check_feed, has_breach
+from week10_ops_tool.config import Config, ConfigError, FeedSpec, parse_duration
 
 
 def _spec(name="feed", pattern="feed_*.csv", max_age="24h", min_bytes=5, required=True):

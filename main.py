@@ -21,10 +21,10 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from ops_tool.checker import check_all, has_breach
-from ops_tool.config import ConfigError, load_config
-from ops_tool.notifier import NotifyError, deliver
-from ops_tool.report import (
+from week10_ops_tool.checker import check_all, has_breach
+from week10_ops_tool.config import ConfigError, load_config
+from week10_ops_tool.notifier import NotifyError, deliver
+from week10_ops_tool.report import (
     breach_count,
     render_json,
     render_markdown,

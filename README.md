@@ -24,7 +24,7 @@ On any breach it writes a timestamped report (`.txt` / `.md` / `.json`) and
 runs end-to-end without credentials.
 
 It ships as both a **CLI** (`main.py`, cron-friendly, meaningful exit codes) and
-a **Streamlit UI** (`app.py`), sharing one core package (`ops_tool/`).
+a **Streamlit UI** (`app.py`), sharing one core package (`week10_ops_tool/`).
 
 ## Project layout
 
@@ -35,7 +35,7 @@ directory — cloning it gives you a folder of that name).
 week10_ops_tool/                 <- repo root == the tool directory
 ├── main.py                 CLI entrypoint (run, --dry-run, --seed-samples, --quiet)
 ├── app.py                  Streamlit UI  (streamlit run app.py)
-├── ops_tool/
+├── week10_ops_tool/        core package  (imported as `week10_ops_tool.*`)
 │   ├── config.py           load + validate feeds.yaml, parse "26h"/"90m"/"2d"
 │   ├── checker.py          freshness classifier -> FeedResult list (pure logic)
 │   ├── report.py           text / markdown / json renderers

@@ -40,8 +40,8 @@ feed is `MISSING`, `LATE`, or `EMPTY`.
 
 **What it produced:** Four clarifying questions. My answers: **Data Freshness /
 SLA monitor**, **CLI + Streamlit**, **SMTP email with console fallback**,
-**local drop folder**. Claude then proposed the architecture — `ops_tool/` core
-package (`config`, `checker`, `report`, `notifier`) + `main.py` CLI + `app.py`
+**local drop folder**. Claude then proposed the architecture — a `week10_ops_tool/`
+core package (`config`, `checker`, `report`, `notifier`) + `main.py` CLI + `app.py`
 Streamlit UI, a YAML config with `26h`-style durations, sample data seeded with
 back-dated modification times, and exit codes `0`/`1`/`2`.
 
@@ -59,10 +59,13 @@ back-dated modification times, and exit codes `0`/`1`/`2`.
 
 | File | What it does |
 | --- | --- |
-| `ops_tool/config.py` | Load + validate `feeds.yaml`; `parse_duration` for `s/m/h/d`; `FeedSpec` / `Config` dataclasses |
-| `ops_tool/checker.py` | `check_feed` / `check_all` classify each feed `OK` / `LATE` / `MISSING` / `EMPTY` (EMPTY before LATE); pure logic |
-| `ops_tool/report.py` | Text, Markdown and JSON renderers, worst-status-first ordering, `subject_line` |
-| `ops_tool/notifier.py` | `SmtpSettings.from_env()` (no hardcoded creds), stdlib `smtplib` send, `deliver()` console fallback |
+| `week10_ops_tool/config.py` | Load + validate `feeds.yaml`; `parse_duration` for `s/m/h/d`; `FeedSpec` / `Config` dataclasses |
+| `week10_ops_tool/checker.py` | `check_feed` / `check_all` classify each feed `OK` / `LATE` / `MISSING` / `EMPTY` (EMPTY before LATE); pure logic |
+| `week10_ops_tool/report.py` | Text, Markdown and JSON renderers, worst-status-first ordering, `subject_line` |
+| `week10_ops_tool/notifier.py` | `SmtpSettings.from_env()` (no hardcoded creds), stdlib `smtplib` send, `deliver()` console fallback |
+
+_(The core package was first generated as `ops_tool/` and later renamed to
+`week10_ops_tool/` — see Entry 5.)_
 | `main.py` | argparse CLI: `--seed-samples`, `--dry-run`, `--quiet`, `--config`, `--drop-folder`, `--report-dir`; timestamped reports; exit `0/1/2` |
 | `app.py` | Streamlit UI over the same core: status metrics, colour-coded table, alert preview / send |
 | `feeds.example.yaml` | Four sample feeds chosen to demonstrate all four statuses |
@@ -149,10 +152,16 @@ demo `Week10_Product_Demo_Obunde.mp4`, a `LINKEDIN_POST.md` draft, and a
 > all listed files/deli ie the documentations and videos should be in root or
 > they wont be detected
 
+> i have changed ops_tool folder to week10_ops_tool...do the refactoring
+
 Result: generated the silent screencast MP4 with an `imageio-ffmpeg` +
-Pillow frame renderer, then flattened the whole project to the repository root
+Pillow frame renderer; flattened the whole project to the repository root
 (the repo name `week10_ops_tool` is the tool directory) with every doc and the
-video at the top level.
+video at the top level; and after the user renamed the core package folder
+`ops_tool/` → `week10_ops_tool/`, updated the remaining imports, docstrings and
+docs to match (the IDE refactor had already rewritten the `import` lines) and
+re-ran the suite (22 passing) + the Streamlit `AppTest` to confirm nothing
+broke.
 
 ---
 
