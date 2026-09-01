@@ -1,0 +1,37 @@
+# week10_ops_tool — feed freshness SLAs
+#
+# drop_folder may be set here, or overridden with the DROP_FOLDER env var
+# or the --drop-folder CLI flag (flag/env win over this file).
+drop_folder: ./sample_data/inbox
+
+# Each feed:
+#   name      human label used in reports / alerts
+#   pattern   glob (relative to drop_folder) matching that feed's files;
+#             the newest matching file is the one checked
+#   max_age   freshness SLA as <number><unit>, unit = s | m | h | d
+#   min_bytes newest file smaller than this is reported EMPTY (default 1)
+#   required  if false, "no file" is OK instead of MISSING (default true)
+feeds:
+  - name: orders
+    pattern: "orders_*.csv"
+    max_age: 26h
+    min_bytes: 10
+    required: true
+
+  - name: inventory
+    pattern: "inventory_*.csv"
+    max_age: 26h
+    min_bytes: 10
+    required: true
+
+  - name: clickstream
+    pattern: "clickstream_*.csv"
+    max_age: 6h
+    min_bytes: 20
+    required: true
+
+  - name: payments
+    pattern: "payments_*.csv"
+    max_age: 26h
+    min_bytes: 10
+    required: true
